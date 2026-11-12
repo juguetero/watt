@@ -1182,7 +1182,7 @@
     document.getElementById('gar-import').addEventListener('click', importGarmin);
   }
   function subscribeGarmin(db){
-    db.collection('garmin').orderBy('fecha', 'asc').limit(1000).onSnapshot(function(snap){
+    db.collection('garmin').orderBy('fecha', 'asc').limit(5000).onSnapshot(function(snap){
       snap.docs.forEach(function(doc){ var d = doc.data(); if(d && d.fecha) garminCache[d.fecha] = d; });
       render();
     }, function(){});

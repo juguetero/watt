@@ -3,7 +3,7 @@
  * - JS/íconos/fuentes/SDK: caché primero.
  * - api.anthropic.com: nunca se cachea.
  * Sube VERSION cuando publiques cambios. */
-var VERSION = 'wk-v1';
+var VERSION = 'wk-v2';
 var CORE = ['./', 'index.html', 'runtime.js', 'ajustes.js', 'manifest.webmanifest',
   'icons/apple-touch-icon.png', 'icons/icon-192.png', 'icons/icon-512.png'];
 

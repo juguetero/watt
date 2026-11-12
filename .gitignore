@@ -3,3 +3,6 @@ migracion/
 *.json.bak
 .DS_Store
 tools/icon-1024.png
+datos-garmin/
+tools/garmin/.venv/
+__pycache__/
