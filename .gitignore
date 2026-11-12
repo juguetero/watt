@@ -1,0 +1,5 @@
+# Datos personales: nunca al repo público
+migracion/
+*.json.bak
+.DS_Store
+tools/icon-1024.png

@@ -1,0 +1,92 @@
+  <!-- ============ MÁS ============ -->
+  <section class="panel" id="panel-mas">
+    <div class="stack">
+      <div class="callout warn backup-warn" id="mas-backup-warn"></div>
+      <div class="more-list">
+        <button type="button" data-tab="plan"><span class="ic" style="background:var(--fuerza)">◆</span><span class="tx"><b>Plan</b><span>Semana, fuerza con cargas, bici</span></span><span class="chev">›</span></button>
+        <button type="button" data-tab="nutricion"><span class="ic" style="background:var(--movilidad)">●</span><span class="tx"><b>Nutrición</b><span>Objetivos y estructura de comidas</span></span><span class="chev">›</span></button>
+        <button type="button" data-tab="analisis"><span class="ic" style="background:var(--bici)">▲</span><span class="tx"><b>Análisis</b><span>Hallazgos, energía e informe con Claude</span></span><span class="chev">›</span></button>
+        <button type="button" data-tab="ajustes"><span class="ic" style="background:var(--text-3)">⚙</span><span class="tx"><b>Ajustes</b><span>Claude, respaldo de datos, instalación</span></span><span class="chev">›</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AJUSTES ============ -->
+  <section class="panel" id="panel-ajustes">
+    <div class="stack">
+      <div>
+        <button type="button" class="back-link" data-tab="mas">‹ Más</button>
+        <h2 class="section-title">Ajustes</h2>
+      </div>
+
+      <div class="card">
+        <h3 class="section-title" style="font-size:18px;">Respaldo de datos</h3>
+        <div class="section-sub" style="margin-bottom:6px;">Tus datos viven solo en este iPhone. Exporta un respaldo cada semana y guárdalo en iCloud Drive (Compartir → Guardar en Archivos).</div>
+        <div class="kv" id="aj-counts"></div>
+        <div class="inline-note" id="aj-last" style="margin-top:10px;"></div>
+        <div class="btn-row">
+          <button type="button" class="primary" id="aj-export">Exportar respaldo</button>
+        </div>
+        <label class="set-row">Al importar
+          <select id="aj-mode">
+            <option value="merge">Combinar con lo que hay (gana el archivo si hay el mismo día)</option>
+            <option value="replace">Reemplazar todo por el archivo</option>
+          </select>
+        </label>
+        <div class="btn-row">
+          <button type="button" class="secondary" id="aj-import-btn">Importar respaldo (.json)</button>
+          <input type="file" id="aj-import" accept=".json,application/json" hidden>
+        </div>
+        <div class="inline-note" id="aj-backup-msg" aria-live="polite" style="margin-top:8px;"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="section-title" style="font-size:18px;">Perfil</h3>
+        <div class="section-sub" style="margin-bottom:0;">Se guarda solo en este iPhone y viaja dentro de tu respaldo. Edad y altura alimentan los cálculos de la balanza y el informe.</div>
+        <label class="set-row">Nombre <input type="text" id="pf-nombre" autocomplete="off" placeholder="Opcional"></label>
+        <label class="set-row">Fecha de nacimiento <input type="date" id="pf-nac"></label>
+        <label class="set-row">Altura (cm) <input type="number" id="pf-alt" min="120" max="230" step="1" placeholder="170"></label>
+        <label class="set-row">Contexto médico para Claude (opcional)
+          <input type="text" id="pf-ctx" autocomplete="off" placeholder="Ej.: condición diagnosticada, cirugías, limitaciones">
+        </label>
+        <label class="set-row">Especialista de referencia <input type="text" id="pf-esp" autocomplete="off" placeholder="tu médico"></label>
+        <div class="btn-row">
+          <button type="button" class="primary" id="pf-save">Guardar perfil</button>
+          <span class="inline-note" id="pf-msg" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="section-title" style="font-size:18px;">Claude</h3>
+        <div class="section-sub" style="margin-bottom:0;">Para estimar comidas desde texto o foto y generar el informe de Análisis. Usa tu API key de Anthropic (console.anthropic.com → API Keys). Se guarda solo en este teléfono y cada consulta se cobra en esa cuenta.</div>
+        <label class="set-row">API key
+          <input type="password" id="aj-key" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="sk-ant-…">
+        </label>
+        <label class="set-row">Modelo
+          <select id="aj-model">
+            <option value="claude-opus-5-5">Claude Opus 5.5 — mejor calidad (recomendado)</option>
+            <option value="claude-sonnet-5-5">Claude Sonnet 5.5 — más rápido y barato</option>
+            <option value="claude-haiku-5-5">Claude Haiku 5.5 — el más económico</option>
+          </select>
+        </label>
+        <div class="btn-row">
+          <button type="button" class="primary" id="aj-key-save">Guardar</button>
+          <button type="button" class="secondary" id="aj-key-test">Probar conexión</button>
+          <button type="button" class="mini" id="aj-key-clear">Borrar key</button>
+        </div>
+        <div class="inline-note" id="aj-key-msg" aria-live="polite" style="margin-top:8px;"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="section-title" style="font-size:18px;">Instalar en el iPhone</h3>
+        <ol class="steps">
+          <li>Abre esta página en <strong>Safari</strong>.</li>
+          <li>Toca <strong>Compartir</strong> (cuadrado con flecha) → <strong>Agregar a inicio</strong>.</li>
+          <li>Abre siempre la app desde el ícono «W&amp;K»: así funciona a pantalla completa y sin conexión.</li>
+        </ol>
+        <div class="inline-note" id="aj-install" style="margin-top:10px;"></div>
+      </div>
+
+      <footer class="disclaimer" id="aj-version">Watts &amp; Kilos · app personal no oficial</footer>
+    </div>
+  </section>

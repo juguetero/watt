@@ -1,0 +1,95 @@
+<nav class="tabbar" aria-label="Secciones">
+  <button type="button" data-tab="hoy" aria-selected="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/></svg>
+    Hoy
+  </button>
+  <button type="button" data-tab="comidas" aria-selected="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8a2 2 0 0 0 2 2v8M11 3v6a2 2 0 0 1-2 2M5 3v6a2 2 0 0 0 2 2"/><path d="M17 21V3c-2 1.5-3 4-3 7v4h3"/></svg>
+    Comidas
+  </button>
+  <button type="button" data-tab="balanza" aria-selected="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M8 9a5 5 0 0 1 8 0"/><path d="M12 9.5l1.5-2"/></svg>
+    Balanza
+  </button>
+  <button type="button" data-tab="progreso" aria-selected="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M5 15l4-5 4 3 6-7"/></svg>
+    Progreso
+  </button>
+  <button type="button" data-tab="mas" aria-selected="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></svg>
+    Más
+  </button>
+</nav>
+
+<style>
+  /* ================= Ajustes para iPhone (standalone) ================= */
+  html{ -webkit-text-size-adjust:100%; }
+  body{ -webkit-tap-highlight-color:transparent; overscroll-behavior-y:none; }
+  .wrap{
+    padding-top:calc(env(safe-area-inset-top, 0px) + 18px);
+    padding-left:max(16px, env(safe-area-inset-left, 0px));
+    padding-right:max(16px, env(safe-area-inset-right, 0px));
+    padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 96px);
+  }
+  header.top{ margin-bottom:18px; }
+  @media (max-width:720px){
+    header.top h1{ font-size:30px; }
+    header.top > div:last-child{ align-items:flex-start !important; flex-direction:row !important; flex-wrap:wrap; }
+    .subtitle{ font-size:13.5px; }
+    /* Evita el zoom automático de iOS al enfocar campos */
+    input, select, textarea{ font-size:16px !important; }
+    button.primary, button.secondary{ min-height:44px; }
+    button.mini{ min-height:32px; padding:4px 10px; font-size:13px; }
+    .card{ padding:16px; border-radius:16px; }
+    #summary-tiles{ grid-template-columns:repeat(2,1fr) !important; }
+    #summary-tiles .tile:last-child{ grid-column:1/-1; }
+    .tile .value{ font-size:23px; }
+    form.log-form .checkline input{ width:22px; height:22px; }
+    .kg-field input.kg-input{ width:64px; }
+  }
+  nav.tabbar{
+    position:fixed; left:0; right:0; bottom:0; z-index:50;
+    display:flex; justify-content:center;
+    background:color-mix(in srgb, var(--surface) 86%, transparent);
+    -webkit-backdrop-filter:saturate(180%) blur(20px); backdrop-filter:saturate(180%) blur(20px);
+    border-top:1px solid var(--border);
+    padding:0 max(6px, env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(6px, env(safe-area-inset-left, 0px));
+  }
+  nav.tabbar button{
+    flex:1; max-width:120px; display:flex; flex-direction:column; align-items:center; gap:2px;
+    padding:7px 0 5px; min-height:52px; background:none; border:0; cursor:pointer;
+    font:inherit; font-size:10.5px; font-weight:500; letter-spacing:.01em; color:var(--text-3);
+  }
+  nav.tabbar button svg{ width:25px; height:25px; }
+  nav.tabbar button[aria-selected="true"]{ color:var(--accent); }
+  nav.tabbar button:focus-visible{ outline:2px solid var(--accent); outline-offset:-4px; border-radius:10px; }
+
+  /* Panel "Más" */
+  .more-list{ background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); }
+  .more-list button{
+    width:100%; display:flex; align-items:center; gap:14px; padding:14px 16px; min-height:60px;
+    background:none; border:0; border-top:1px solid var(--border); text-align:left; cursor:pointer;
+    font:inherit; color:var(--text);
+  }
+  .more-list button:first-child{ border-top:0; }
+  .more-list button:active{ background:var(--surface-2); }
+  .more-list .ic{ width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex:none; color:#fff; font-size:17px; }
+  .more-list .tx{ flex:1; display:flex; flex-direction:column; gap:1px; }
+  .more-list .tx b{ font-weight:600; font-size:15.5px; }
+  .more-list .tx span{ font-size:13px; color:var(--text-2); }
+  .more-list .chev{ color:var(--text-3); font-size:20px; }
+  .back-link{ display:inline-flex; align-items:center; gap:4px; font:inherit; font-size:15px; color:var(--accent); background:none; border:0; padding:4px 0; margin-bottom:6px; cursor:pointer; }
+
+  /* Ajustes */
+  .set-row{ display:flex; flex-direction:column; gap:6px; margin-top:12px; font-size:13px; color:var(--text-2); font-weight:500; }
+  .set-row input, .set-row select{ font:inherit; font-size:16px; padding:10px 11px; border-radius:10px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); width:100%; }
+  .kv{ display:grid; grid-template-columns:repeat(auto-fit,minmax(96px,1fr)); gap:8px; margin-top:10px; }
+  .kv div{ background:var(--surface-2); border-radius:10px; padding:8px 10px; }
+  .kv b{ display:block; font-family:'IBM Plex Mono',monospace; font-size:18px; }
+  .kv span{ font-size:11.5px; color:var(--text-3); text-transform:uppercase; letter-spacing:.05em; }
+  .file-btn{ position:relative; overflow:hidden; display:inline-flex; align-items:center; }
+  .file-btn input{ position:absolute; inset:0; opacity:0; cursor:pointer; font-size:0 !important; }
+  ol.steps{ margin:8px 0 0; padding-left:20px; font-size:14.5px; line-height:1.7; }
+  .backup-warn{ display:none; margin-bottom:14px; }
+  .backup-warn.show{ display:block; }
+</style>
